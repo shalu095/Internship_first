@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Internship - Web Development</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            font-family: "Roboto", sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            padding: 20px;
+            background-color: white;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            background: linear-gradient(to right, darkorange, goldenrod);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            margin-top: 30px;
+            text-align: center;
+            text-shadow: 1px 1px 2px #ccc;
+        }
+
+        h2 {
+            font-size: 2em;
+            color: goldenrod;
+            margin-bottom: 16px;
+            margin-top: 24px;
+            border-left: 5px solid darkorange;
+            padding-left: 10px;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            color: teal;
+            margin-bottom: 16px;
+            margin-top: 24px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        p {
+            margin-bottom: 1em;
+        }
+
+        a:link {
+            color: goldenrod;
+        }
+
+        a:hover {
+            color: blue;
+        }
+
+        a:visited {
+            color: gray;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .resources {
+            margin-top: 20px;
+        }
+
+        .image-section {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .image-section h3 {
+            margin-bottom: 10px;
+            color: teal;
+        }
+
+        .button-container {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .button-container button {
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            background-color: teal;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .button-container button:hover {
+            background-color: seagreen;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to Web Development</h1>
+
+    <h2>Topic: Introduction to HTML</h2>
+
+    <p>HTML (HyperText Markup Language) is the standard markup language used to create web pages. It forms the structure of web content using a series of elements and tags.</p>
+
+    <h3>Basic Structure of an HTML Document</h3>
+
+    <ul>
+        <li><strong>Doctype:</strong> Declares the HTML version.</li>
+        <li><strong>HTML Tag:</strong> The root element of an HTML page.</li>
+        <li><strong>Head:</strong> Contains meta information, title, and links to stylesheets or scripts.</li>
+        <li><strong>Body:</strong> Contains all visible content like text, images, and links.</li>
+    </ul>
+
+    <div class="image-section">
+        <h3>HTML Structure</h3>
+        <img src="./assets/html.png" alt="Illustration showing basic HTML document structure" width="450px">
+    </div>
+
+    <div class="resources">
+        <h4>Learn More:</h4>
+        <ul>
+            <li><a href="https://en.wikipedia.org/wiki/HTML" target="_blank">Wikipedia - HTML</a></li>
+            <li><a href="https://www.w3schools.com/html/" target="_blank">W3Schools - HTML Tutorial</a></li>
+        </ul>
+    </div>
+
+    <div class="button-container">
+        <button onclick="alert('Keep Learning HTML!')">Get Started</button>
+    </div>
+
+</body>
+</html>
