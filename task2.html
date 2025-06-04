@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Interactive Form & To-Do List</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, aliceblue, lavenderblush, mintcream);
+      color: black;
+      text-align: center;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      padding: 2rem;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    form,
+    .todo {
+      background: white;
+      padding: 2rem;
+      border: 4px solid teal;
+      box-shadow: 0px 10px 25px rgba(0, 128, 128, 0.3);
+      width: 350px;
+      height: 350px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      transition: all 0.3s ease-in-out;
+    }
+
+    form:hover,
+    .todo:hover {
+      transform: scale(1.05);
+      box-shadow: 0px 12px 30px rgba(0, 128, 128, 0.4);
+    }
+
+    h2 {
+      margin-bottom: 1rem;
+      color: navy;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"] {
+      width: 80%;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      border: 2px solid teal;
+      font-size: 1rem;
+      transition: all 0.3s ease-in-out;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus {
+      border-color: navy;
+      box-shadow: 0px 0px 10px dodgerblue;
+      outline: none;
+    }
+
+    .success-message {
+      display: none;
+      color: green;
+      font-weight: bold;
+      margin-top: 0.5rem;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    input[type="submit"],
+    .todo button {
+      background: linear-gradient(135deg, navy, royalblue);
+      color: white;
+      border: none;
+      padding: 0.9rem 1.4rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.3s, background 0.4s;
+    }
+
+    input[type="submit"]:hover,
+    .todo button:hover {
+      background: linear-gradient(135deg, royalblue, skyblue);
+      transform: scale(1.1);
+      box-shadow: 0px 0px 10px lightskyblue;
+    }
+
+    .todo ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 1rem;
+    }
+
+    .todo li {
+      background: lightcyan;
+      padding: 0.7rem 1rem;
+      margin-bottom: 0.6rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-left: 5px solid teal;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .todo li:hover {
+      background: paleturquoise;
+      transform: scale(1.02);
+    }
+
+    .todo li button {
+      background: crimson;
+      padding: 0.4rem 0.8rem;
+      font-size: 0.9rem;
+      transition: background 0.3s;
+    }
+
+    .todo li button:hover {
+      background: darkred;
+      box-shadow: 0px 0px 8px red;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Form Section -->
+    <form id="contactForm">
+      <h2>Contact Us</h2>
+      <input type="text" id="name" placeholder="Your Name" required />
+      <input type="email" id="email" placeholder="Your Email" required />
+      <input type="submit" value="Submit" />
+      <span id="formSuccess" class="success-message">Submitted Successfully!</span>
+    </form>
+
+    <!-- To-Do List -->
+    <div class="todo">
+      <h2>To-Do List</h2>
+      <input type="text" id="taskInput" placeholder="New Task" />
+      <button onclick="addTask()">Add Task</button>
+      <ul id="taskList"></ul>
+    </div>
+  </div>
+
+  <script>
+    // Form validation & success message display
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+      const name = document.getElementById("name");
+      const email = document.getElementById("email");
+      const formSuccess = document.getElementById("formSuccess");
+      const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+      if (!name.value.trim() || !email.value.match(emailPattern)) {
+        alert("Please enter a valid name and email.");
+        e.preventDefault();
+      } else {
+        formSuccess.style.display = "block";
+      }
+    });
+
+    // To-do list logic
+    function addTask() {
+      const input = document.getElementById("taskInput");
+      const taskText = input.value.trim();
+      if (taskText === "") return;
+
+      const li = document.createElement("li");
+      li.innerHTML = `${taskText} <button onclick="removeTask(this)">X</button>`;
+      document.getElementById("taskList").appendChild(li);
+      input.value = "";
+    }
+
+    function removeTask(button) {
+      const li = button.parentElement;
+      li.remove();
+    }
+  </script>
+
+</body>
+</html>
