@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Glassmorphic Quiz & Jokes</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&family=Quicksand:wght@500&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Manrope', sans-serif;
+      background: linear-gradient(120deg, #232526, #414345);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      animation: fadeIn 1s ease;
+    }
+
+    h2 {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      color: #ff6f61;
+      text-shadow: 0 0 12px #ff6f61;
+    }
+
+    #question { min-height: 3.5rem; }
+
+    #answers {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    button {
+      cursor: pointer;
+      padding: 0.9rem 1rem;
+      font-size: 1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 12px;
+      transition: all 0.3s ease-in-out;
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      box-shadow: 0 6px 15px rgba(255, 111, 97, 0.3);
+      backdrop-filter: blur(5px);
+    }
+
+    button:hover:not(:disabled) {
+      background: #ff6f61;
+      transform: translateY(-3px);
+    }
+
+    button.correct {
+      background: limegreen !important;
+      box-shadow: 0 0 12px limegreen;
+    }
+
+    button.wrong {
+      background: red !important;
+      box-shadow: 0 0 12px red;
+    }
+
+    #quiz-result {
+      font-size: 1.3rem;
+      font-weight: bold;
+      height: 2rem;
+      margin-bottom: 1rem;
+      color: #ff6f61;
+      text-shadow: 0 0 10px #ff6f61;
+    }
+
+    #restart-btn {
+      background: deepskyblue;
+      font-size: 1.1rem;
+      padding: 1rem;
+      border-radius: 12px;
+      display: none;
+      margin: auto;
+    }
+
+    /* Joke Section */
+    .joke {
+      margin-top: 2rem;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1.5rem;
+      border-radius: 14px;
+      box-shadow: inset 0 0 15px rgba(255, 111, 97, 0.3);
+      backdrop-filter: blur(10px);
+      color: lightcyan;
+      font-style: italic;
+      font-size: 1.1rem;
+      min-height: 3.5rem;
+    }
+
+    .joke button {
+      margin-top: 1rem;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.3);
+      color: #fff;
+      font-weight: bold;
+      font-size: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(255, 111, 97, 0.5);
+      transition: background 0.3s ease;
+    }
+
+    .joke button:hover {
+      background: #ff6f61;
+      box-shadow: 0 6px 25px rgba(255, 111, 97, 0.7);
+      transform: translateY(-2px);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2 id="question">Loading question...</h2>
+    <div id="answers"></div>
+    <div id="quiz-result"></div>
+    <button id="restart-btn" onclick="restartQuiz()">Restart Quiz</button>
+
+    <section class="joke">
+      <h2>Random Joke</h2>
+      <p id="joke-text">Click the button to get a joke.</p>
+      <button onclick="getJoke()">Get Joke</button>
+    </section>
+  </div>
+
+  <script>
+    const questions = [
+      { question: "What is the speed of light?", options: { a: "300,000 km/s", b: "150,000 km/s", c: "100,000 km/s" }, correct: "a" },
+      { question: "Which element has the atomic number 1?", options: { a: "Helium", b: "Oxygen", c: "Hydrogen" }, correct: "c" },
+      { question: "What is the hardest natural substance?", options: { a: "Gold", b: "Diamond", c: "Iron" }, correct: "b" }
+    ];
+
+    let currentQuestion = 0;
+
+    function loadQuestion() {
+      const q = questions[currentQuestion];
+      document.getElementById("question").textContent = `${currentQuestion + 1}. ${q.question}`;
+      const answersDiv = document.getElementById("answers");
+      answersDiv.innerHTML = "";
+
+      for (let key in q.options) {
+        const btn = document.createElement("button");
+        btn.textContent = `${key.toUpperCase()}) ${q.options[key]}`;
+        btn.onclick = () => checkAnswer(key, btn);
+        answersDiv.appendChild(btn);
+      }
+
+      document.getElementById("quiz-result").textContent = "";
+      document.getElementById("restart-btn").style.display = "none";
+    }
+
+    function checkAnswer(answer, button) {
+      const q = questions[currentQuestion];
+      const result = document.getElementById("quiz-result");
+      const buttons = document.querySelectorAll("#answers button");
+
+      buttons.forEach(b => b.disabled = true);
+
+      if (answer === q.correct) {
+        result.textContent = "✅ Correct!";
+        button.classList.add("correct");
+      } else {
+        result.textContent = "❌ Incorrect.";
+        button.classList.add("wrong");
+      }
+
+      currentQuestion++;
+
+      setTimeout(() => {
+        if (currentQuestion < questions.length) {
+          loadQuestion();
+        } else {
+          document.getElementById("question").textContent = "🎉 Quiz Complete!";
+          document.getElementById("answers").innerHTML = "";
+          result.textContent = "";
+          document.getElementById("restart-btn").style.display = "block";
+        }
+      }, 1000);
+    }
+
+    function restartQuiz() {
+      currentQuestion = 0;
+      loadQuestion();
+    }
+
+    function getJoke() {
+      fetch("https://official-joke-api.appspot.com/random_joke")
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById("joke-text").textContent =
+            data.setup + " — " + data.punchline;
+        })
+        .catch(() => {
+          document.getElementById("joke-text").textContent = "Failed to load joke.";
+        });
+    }
+
+    window.onload = loadQuestion;
+  </script>
+</body>
+</html>
