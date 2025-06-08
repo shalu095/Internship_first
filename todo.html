@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>To-Do List | Task 4</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="todo-active">
+
+  <nav class="top-nav">
+    <button type="button" class="px-4 py-2 font-semibold text-gray-800 hover:bg-gray-200 rounded-lg"
+      onclick="location.href='index.html'">Portfolio</button>
+    <button type="button" class="px-4 py-2 font-semibold text-gray-800 bg-gray-200 rounded-lg"
+      onclick="location.href='todo.html'">To-Do</button>
+    <button type="button" class="px-4 py-2 font-semibold text-gray-800 hover:bg-gray-200 rounded-lg"
+      onclick="location.href='shop.html'">Shop</button>
+  </nav>
+
+  <main>
+     <section id="todo" class="content-section active">
+            <div class="filter-box todo-box">
+                <h1 style="text-align: center;">To-Do List</h1><br>
+                <form id="todo-form">
+                    <input type="text" id="todo-input" placeholder="Add new task..." autocomplete="off" />
+                    <button type="submit">Add</button>
+                </form>
+                <ul id="todo-list"></ul>
+                <p style="text-align: center;"><small><b><u>Click</u></b> task to <b>mark complete</b>.<br><b> <u>Double
+                                click</u></b> to <b>remove</b>.</small></p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; Shalu..</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
