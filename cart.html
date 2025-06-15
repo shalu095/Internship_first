@@ -1,0 +1,34 @@
+<!DOCTYPE html>Add commentMore actions
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart | Task 4</title>
+    <link rel="stylesheet" href="cart.css">
+    <link href="https://fonts.googleapis.com/css2?family=Zefani&display=swap" rel="stylesheet">
+</head>
+<body class="page-body">
+    <header class="nav">
+        <nav class="nav-bar">
+            <button class="nav-link" onclick="location.href='index.html'">Home</button>
+            <button class="nav-link" onclick="location.href='shop.html'">Shop</button>
+            <button class="nav-link nav-link-active" onclick="location.href='cart.html'">Cart</button>
+        </nav>
+    </header>
+    <main class="main-content">
+        <u>
+            <h1 class="cart-title">Your Cart</h1>
+        </u>
+        <div id="cart-list" class="cart-grid"></div>
+        <div class="cart-summary">
+            <h3>Total: ₹<span id="cart-total">0.00</span></h3>
+            <button id="clear-cart" class="clear-cart-button">Clear Cart</button>
+            <button id="buy-cart" class="buy-cart-button">Buy</button>
+        </div>
+    </main>
+    <footer class="footer">
+        <p>© Shalu..</p>
+    </footer>
+    <script src="cart.js"></script>
+</body>
+</html>

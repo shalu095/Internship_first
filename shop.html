@@ -1,72 +1,68 @@
-<!DOCTYPE html>
+<!DOCTYPE html>Add commentMore actions
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shop | Task 4</title>
-  <link rel="stylesheet" href="shop.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Merriweather:wght@700&display=swap" rel="stylesheet">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop | Task 4</title>
+    <link rel="stylesheet" href="shop.css">
+    <link href="https://fonts.googleapis.com/css2?family=Zefani&display=swap" rel="stylesheet">
 </head>
-
 <body class="page-body">
-  <header class="nav">
-    <nav class="nav-bar">
-      <button class="nav-link" onclick="location.href='index.html'">Portfolio</button>
-      <button class="nav-link" onclick="location.href='todo.html'">To-Do</button>
-      <button class="nav-link nav-link-active" onclick="location.href='shop.html'">Shop</button>
-    </nav>
-  </header>
-
-  <main class="main-content">
-    <h1 class="shop-title underline">Shop</h1>
-
-    <section class="filter-box">
-      <div class="filter-sort-section">
-
-        <div class="filter-menu">
-          <button id="filter-toggle" class="filter-button">Filter</button>
-          <div id="filter-options" class="filter-dropdown hidden">
-            <h3 class="filter-heading">Select Categories</h3>
-            <div class="category-list">
-              <label class="category-item">
-                <input type="checkbox" class="category-checkbox" value="Electronics" checked />
-                <span class="category-name">Electronics</span>
-              </label>
-              <label class="category-item">
-                <input type="checkbox" class="category-checkbox" value="Clothing" checked />
-                <span class="category-name">Clothing</span>
-              </label>
-              <label class="category-item">
-                <input type="checkbox" class="category-checkbox" value="Books" checked />
-                <span class="category-name">Books</span>
-              </label>
+    <header class="nav">
+        <nav class="nav-bar">
+            <button class="nav-link" onclick="location.href='index.html'">Home</button>
+            <button class="nav-link nav-link-active" onclick="location.href='shop.html'">Shop</button>
+            <button class="nav-link" onclick="location.href='cart.html'">Cart</button>
+        </nav>
+    </header>
+    <main class="main-content">
+        <u>
+            <h1 class="shop-title">Shop</h1>
+        </u>
+        <div class="filter-box">
+            <div class="filter-sort-section">
+                <div class="filter-menu">
+                    <button id="filter-toggle" class="filter-button">Filter</button>
+                    <div id="filter-options" class="filter-dropdown hidden">
+                        <h3 class="filter-heading">Select Categories</h3>
+                        <div class="category-list">
+                            <label class="category-item">
+                                <input type="checkbox" class="category-checkbox" value="Electronics" checked>
+                                <span class="category-name">Electronics</span>
+                            </label>
+                            <label class="category-item">
+                                <input type="checkbox" class="category-checkbox" value="Clothing" checked>
+                                <span class="category-name">Clothing</span>
+                            </label>
+                            <label class="category-item">
+                                <input type="checkbox" class="category-checkbox" value="Books" checked>
+                                <span class="category-name">Books</span>
+                            </label>
+                        </div>
+                        <button id="apply-filter" class="apply-button">Apply Filter</button>
+                    </div>
+                </div>
+                <div class="search-sort-container">
+                    <div class="search-box">
+                        <input type="text" id="search-input" placeholder="Search products..." class="search-input">
+                        <button id="search-button" class="search-button">Search</button>
+                    </div>
+                    <div class="sort-box">
+                        <h3 class="filter-heading">Sort By</h3>
+                        <select id="sort-options" class="sort-dropdown">
+                            <option value="price-desc">Price (High - Low)</option>
+                            <option value="price-asc">Price (Low - High)</option>
+                        </select>
+                    </div>
+                </div>
             </div>
-            <button id="apply-filter" class="apply-button">Apply Filter</button>
-          </div>
+            <button id="reset-filter" class="reset-button">Reset Filters</button>
         </div>
-
-        <div class="sort-section">
-          <label for="sort-options" class="filter-heading">Sort By</label>
-          <select id="sort-options" class="sort-dropdown">
-            <option value="price-desc">Price (High - Low)</option>
-            <option value="price-asc">Price (Low - High)</option>
-          </select>
-        </div>
-
-      </div>
-      <button id="reset-filter" class="reset-button">Reset Filters</button>
-    </section>
-
-    <section id="product-list" class="product-grid"></section>
-  </main>
-
-  <footer class="footer">
-    <p>&copy; Shalu..</p>
-  </footer>
-
-  <script src="shop.js"></script>
+        <div id="product-list" class="product-grid"></div>
+    </main>
+    <footer class="footer">
+        <p>© Shalu..</p>
+    </footer>
+    <script src="shop.js"></script>
 </body>
-
 </html>
